@@ -3,5 +3,37 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "lusid-sdk-angular13": {
+      "projectType": "library",
+      "root": "projects/lusid-sdk-angular13",
+      "sourceRoot": "projects/lusid-sdk-angular13/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/lusid-sdk-angular13/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lusid-sdk-angular13/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/lusid-sdk-angular13/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lusid-sdk-angular13/src/test.ts",
+            "tsConfig": "projects/lusid-sdk-angular13/tsconfig.spec.json",
+            "karmaConfig": "projects/lusid-sdk-angular13/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "lusid-sdk-angular13"
 }

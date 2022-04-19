@@ -9,6 +9,12 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
+    "paths": {
+      "lusid-sdk-angular13": [
+        "dist/lusid-sdk-angular13/lusid-sdk-angular13",
+        "dist/lusid-sdk-angular13"
+      ]
+    },
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
