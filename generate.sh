@@ -26,8 +26,9 @@ rm -rf $sdk_output_folder
 shopt -u extglob
 mkdir $sdk_output_folder
 
-echo "checking the openapi-generator-cli version"
-java -jar /usr/swaggerjar/openapi-generator-cli.jar version
+echo "node version: $(node --version)"
+echo "npm version: $(npm --version)"
+echo "openapi-generator-cli version: $(java -jar /usr/swaggerjar/openapi-generator-cli.jar version)"
 
 echo "generating the LUSID API sdk (angular version '$ngVersion')"
 java -jar /usr/swaggerjar/openapi-generator-cli.jar generate \
@@ -46,10 +47,7 @@ echo "updating version in package.json to '$sdk_version'"
 package_json=$gen_root/projects/$project_name/package.json
 cat $package_json | jq -r --arg SDK_VERSION "$sdk_version" '.version |= $SDK_VERSION' > temp && mv temp $package_json
 
-echo "node version: $(node --version)"
-echo "npm version: $(npm --version)"
-
-echo "installing packages (using 'npm ci')"
+echo "installing packages (using 'npm ci') : folder $(pwd)"
 npm ci
 
 echo "stop ng from prompting to use analytics (ng analytics off)"
