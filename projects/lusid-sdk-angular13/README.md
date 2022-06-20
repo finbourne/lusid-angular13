@@ -12,6 +12,11 @@ This uses **Open API Tools** [openapi-generator-cli](https://github.com/OpenAPIT
 [here](https://www.lusid.com/api/swagger/index.html).
 
 To generate the files and build the SDK run the following command after get the latest LUSID API specification from [here](https://www.lusid.com/api/swagger/v0/swagger.json)) and updating the `lusid.json` file
+* Get the latest LUSID API specification
+```
+curl --output lusid.json -X GET https://www.lusid.com/api/swagger/v0/swagger.json
+```
+* Generate the files and build the project
 ```
 docker compose -f docker-compose.yml up
 ```
@@ -19,6 +24,9 @@ docker compose -f docker-compose.yml up
 * the generated files will be in `projects\lusid-sdk-angular13\src\lib\.generated`
     * these files are not checked in to git.
 * this can take a couple of minutes!
+* if you get an error like generate.sh: line 2: $'\r': command not found you need to
+    * make sure your generate.sh file is in unix format: unix2dos generate.sh
+    * force a rebuild of the container `docker compose -f docker-compose.yml up --build`
 
 ## Notes
 1. FINBOURNE has a process that automatically builds and deploys this each time the LUSID API changes
