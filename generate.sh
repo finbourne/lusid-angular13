@@ -30,14 +30,17 @@ echo "node version: $(node --version)"
 echo "npm version: $(npm --version)"
 echo "openapi-generator-cli version: $(java -jar /usr/swaggerjar/openapi-generator-cli.jar version)"
 
-echo "generating the LUSID API sdk (angular version '$ngVersion')"
+echo "generating the LUSID API sdk (angular version '$ngVersion'): mapping Object=>any, DateTime=>string"
 java -jar /usr/swaggerjar/openapi-generator-cli.jar generate \
     -i $swagger_file \
     -g typescript-angular \
     -o $sdk_output_folder \
     -c $gen_root/config.json \
     --additional-properties ngVersion=$ngVersion \
-    --additional-properties npmName=@finbourne/$project_name
+    --additional-properties npmName=@finbourne/$project_name \
+    --type-mappings=Object=any \
+    --type-mappings=object=any \
+    --type-mappings=DateTime=string
 
 cd $gen_root
 
