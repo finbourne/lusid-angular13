@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.11.4507",
+    "version": "0.11.4620",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -948,7 +948,7 @@
       "instrumentIdentifiers": {
         "instrument/default/Currency": "GBP"
       },
-      "quantity": 100,
+      "quantity": 100.0,
       "portfolioId": {
         "scope": "MyScope",
         "code": "UK Equity"
@@ -1001,7 +1001,7 @@
       "instrumentIdentifiers": {
         "instrument/default/Currency": "GBP"
       },
-      "quantity": 100,
+      "quantity": 100.0,
       "portfolioId": {
         "scope": "MyScope",
         "code": "UK Equity"
@@ -1054,7 +1054,7 @@
       "instrumentIdentifiers": {
         "instrument/default/Currency": "GBP"
       },
-      "quantity": 100,
+      "quantity": 100.0,
       "portfolioId": {
         "scope": "MyScope",
         "code": "UK Equity"
@@ -1107,7 +1107,7 @@
       "instrumentIdentifiers": {
         "instrument/default/Currency": "GBP"
       },
-      "quantity": 100,
+      "quantity": 100.0,
       "portfolioId": {
         "scope": "MyScope",
         "code": "UK Equity"
@@ -5971,146 +5971,6 @@
         "x-fbn-apistatus": "EarlyAccess"
       }
     },
-    "/api/compliance": {
-      "get": {
-        "tags": [
-          "Compliance"
-        ],
-        "summary": "[EXPERIMENTAL] ListComplianceRuns: List historical compliance runs. -- DEPRECATING IN FAVOUR OF NEW ENDPOINT",
-        "description": "Use this endpoint to fetch a list of all historical compliance runs.",
-        "operationId": "ListComplianceRuns",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "description": "The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.\r\n            This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields\r\n            must not have changed since the original request. Also, if set, a start value cannot be provided.",
-            "schema": {
-              "maxLength": 500,
-              "minLength": 1,
-              "pattern": "^[a-zA-Z0-9\\+/]*={0,3}$",
-              "type": "string",
-              "description": "The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.\r\n            This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields\r\n            must not have changed since the original request. Also, if set, a start value cannot be provided.",
-              "nullable": true
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "When paginating, limit the number of returned results to this many.",
-            "schema": {
-              "maximum": 5000,
-              "minimum": 1,
-              "type": "integer",
-              "description": "When paginating, limit the number of returned results to this many.",
-              "format": "int32",
-              "nullable": true
-            },
-            "x-nullable": true
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "description": "Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.",
-            "schema": {
-              "maxLength": 16384,
-              "minLength": 0,
-              "pattern": "^[\\s\\S]*$",
-              "type": "string",
-              "description": "Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The List of all compliance runs completed",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResourceListOfComplianceRun"
-                },
-                "example": {
-  "values": [
-    {
-      "runId": "1234-5678-9101",
-      "asAt": "2020-01-05T00:00:00.0000000+00:00"
-    }
-  ],
-  "href": "https://myco.lusid.com/api/api/compliance",
-  "links": []
-}
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResourceListOfComplianceRun"
-                },
-                "example": {
-  "values": [
-    {
-      "runId": "1234-5678-9101",
-      "asAt": "2020-01-05T00:00:00.0000000+00:00"
-    }
-  ],
-  "href": "https://myco.lusid.com/api/api/compliance",
-  "links": []
-}
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResourceListOfComplianceRun"
-                },
-                "example": {
-  "values": [
-    {
-      "runId": "1234-5678-9101",
-      "asAt": "2020-01-05T00:00:00.0000000+00:00"
-    }
-  ],
-  "href": "https://myco.lusid.com/api/api/compliance",
-  "links": []
-}
-              }
-            }
-          },
-          "400": {
-            "description": "The details of the input related failure",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "Error response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LusidProblemDetails"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "oauth2": [ ]
-          }
-        ],
-        "x-fbn-apistatus": "Experimental"
-      }
-    },
     "/api/compliance/rules": {
       "get": {
         "tags": [
@@ -7113,101 +6973,6 @@
         "x-fbn-apistatus": "Experimental"
       }
     },
-    "/api/compliance/run": {
-      "post": {
-        "tags": [
-          "Compliance"
-        ],
-        "summary": "[EXPERIMENTAL] RunComplianceCheck: Kick off the compliance check process -- DEPRECATING - POST TRADE ONLY",
-        "description": "Use this endpoint to fetch the start a compliance run, based on a pre-set mapping file.",
-        "operationId": "RunComplianceCheck",
-        "parameters": [
-          {
-            "name": "fileName",
-            "in": "query",
-            "description": "The name of compliance mappings file to use. Has to exist in drive ComplianceRules folder",
-            "required": true,
-            "schema": {
-              "maxLength": 50,
-              "minLength": 1,
-              "pattern": "^[A-Za-z0-9_\\-\\.]+[A-Za-z0-9_\\-\\. ]*$",
-              "type": "string",
-              "description": "The name of compliance mappings file to use. Has to exist in drive ComplianceRules folder"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The identifying information of a compliance run",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComplianceRun"
-                },
-                "example": {
-  "runId": "1234-5678-9101",
-  "asAt": "2020-01-05T00:00:00.0000000+00:00"
-}
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComplianceRun"
-                },
-                "example": {
-  "runId": "1234-5678-9101",
-  "asAt": "2020-01-05T00:00:00.0000000+00:00"
-}
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComplianceRun"
-                },
-                "example": {
-  "runId": "1234-5678-9101",
-  "asAt": "2020-01-05T00:00:00.0000000+00:00"
-}
-              }
-            }
-          },
-          "400": {
-            "description": "The details of the input related failure",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "Error response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LusidProblemDetails"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "oauth2": [ ]
-          }
-        ],
-        "x-fbn-apistatus": "Experimental"
-      }
-    },
     "/api/compliance/runs": {
       "get": {
         "tags": [
@@ -7276,12 +7041,16 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResourceListOfComplianceRun"
+                  "$ref": "#/components/schemas/ResourceListOfComplianceRunInfo"
                 },
                 "example": {
   "values": [
     {
       "runId": "1234-5678-9101",
+      "instigatedAt": "2020-01-05T00:00:00.0000000+00:00",
+      "completedAt": "2020-01-05T00:00:01.0000000+00:00",
+      "schedule": "PostTrade",
+      "allRulesPassed": true,
       "asAt": "2020-01-05T00:00:00.0000000+00:00"
     }
   ],
@@ -7291,12 +7060,16 @@
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResourceListOfComplianceRun"
+                  "$ref": "#/components/schemas/ResourceListOfComplianceRunInfo"
                 },
                 "example": {
   "values": [
     {
       "runId": "1234-5678-9101",
+      "instigatedAt": "2020-01-05T00:00:00.0000000+00:00",
+      "completedAt": "2020-01-05T00:00:01.0000000+00:00",
+      "schedule": "PostTrade",
+      "allRulesPassed": true,
       "asAt": "2020-01-05T00:00:00.0000000+00:00"
     }
   ],
@@ -7306,12 +7079,16 @@
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResourceListOfComplianceRun"
+                  "$ref": "#/components/schemas/ResourceListOfComplianceRunInfo"
                 },
                 "example": {
   "values": [
     {
       "runId": "1234-5678-9101",
+      "instigatedAt": "2020-01-05T00:00:00.0000000+00:00",
+      "completedAt": "2020-01-05T00:00:01.0000000+00:00",
+      "schedule": "PostTrade",
+      "allRulesPassed": true,
       "asAt": "2020-01-05T00:00:00.0000000+00:00"
     }
   ],
@@ -7421,29 +7198,239 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComplianceRun"
+                  "$ref": "#/components/schemas/ComplianceRunInfo"
                 },
                 "example": {
   "runId": "1234-5678-9101",
+  "instigatedAt": "2020-01-05T00:00:00.0000000+00:00",
+  "completedAt": "2020-01-05T00:00:01.0000000+00:00",
+  "schedule": "PostTrade",
+  "allRulesPassed": true,
   "asAt": "2020-01-05T00:00:00.0000000+00:00"
 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComplianceRun"
+                  "$ref": "#/components/schemas/ComplianceRunInfo"
                 },
                 "example": {
   "runId": "1234-5678-9101",
+  "instigatedAt": "2020-01-05T00:00:00.0000000+00:00",
+  "completedAt": "2020-01-05T00:00:01.0000000+00:00",
+  "schedule": "PostTrade",
+  "allRulesPassed": true,
   "asAt": "2020-01-05T00:00:00.0000000+00:00"
 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComplianceRun"
+                  "$ref": "#/components/schemas/ComplianceRunInfo"
                 },
                 "example": {
   "runId": "1234-5678-9101",
+  "instigatedAt": "2020-01-05T00:00:00.0000000+00:00",
+  "completedAt": "2020-01-05T00:00:01.0000000+00:00",
+  "schedule": "PostTrade",
+  "allRulesPassed": true,
   "asAt": "2020-01-05T00:00:00.0000000+00:00"
+}
+              }
+            }
+          },
+          "400": {
+            "description": "The details of the input related failure",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": [ ]
+          }
+        ],
+        "x-fbn-apistatus": "Experimental"
+      }
+    },
+    "/api/compliance/runs/breached/{runId}": {
+      "get": {
+        "tags": [
+          "Compliance"
+        ],
+        "summary": "[EXPERIMENTAL] GetBreachedOrdersInfo: Get the Ids of Breached orders in a given compliance run and the corresponding list of rules that could have caused it.",
+        "description": "Use this endpoint to get a list or breached orders and the set of rules that may have caused the breach.",
+        "operationId": "GetBreachedOrdersInfo",
+        "parameters": [
+          {
+            "name": "runId",
+            "in": "path",
+            "description": "The RunId that the results should be checked for",
+            "required": true,
+            "schema": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9\\-_]+$",
+              "type": "string",
+              "description": "The RunId that the results should be checked for"
+            }
+          },
+          {
+            "name": "orderScope",
+            "in": "query",
+            "description": "Optional. Find rules related to a specific order by providing an Order Scope/Code combination",
+            "schema": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9\\-_]+$",
+              "type": "string",
+              "description": "Optional. Find rules related to a specific order by providing an Order Scope/Code combination",
+              "nullable": true
+            }
+          },
+          {
+            "name": "orderCode",
+            "in": "query",
+            "description": "Optional. Find rules related to a specific order by providing an Order Scope/Code combination",
+            "schema": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9\\-_]+$",
+              "type": "string",
+              "description": "Optional. Find rules related to a specific order by providing an Order Scope/Code combination",
+              "nullable": true
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "When paginating, limit the number of returned results to this many.",
+            "schema": {
+              "maximum": 5000,
+              "minimum": 1,
+              "type": "integer",
+              "description": "When paginating, limit the number of returned results to this many.",
+              "format": "int32",
+              "nullable": true
+            },
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The potentially breached orders and their rules from a specific compliance run",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceListOfComplianceBreachedOrderInfo"
+                },
+                "example": {
+  "values": [
+    {
+      "orderId": {
+        "scope": "MyScope",
+        "code": "MyPortfolioCode"
+      },
+      "listRuleResult": [
+        {
+          "ruleId": "0897-6574-1324",
+          "portfolio": {
+            "scope": "MyScope",
+            "code": "MyPortfolioCode"
+          },
+          "passed": false,
+          "resultValue": 0.0,
+          "ruleLowerLimit": 0.0,
+          "ruleUpperLimit": 0.0
+        }
+      ]
+    }
+  ],
+  "href": "https://myco.lusid.com/api/api/compliance/breached/some-run-id",
+  "links": []
+}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceListOfComplianceBreachedOrderInfo"
+                },
+                "example": {
+  "values": [
+    {
+      "orderId": {
+        "scope": "MyScope",
+        "code": "MyPortfolioCode"
+      },
+      "listRuleResult": [
+        {
+          "ruleId": "0897-6574-1324",
+          "portfolio": {
+            "scope": "MyScope",
+            "code": "MyPortfolioCode"
+          },
+          "passed": false,
+          "resultValue": 0.0,
+          "ruleLowerLimit": 0.0,
+          "ruleUpperLimit": 0.0
+        }
+      ]
+    }
+  ],
+  "href": "https://myco.lusid.com/api/api/compliance/breached/some-run-id",
+  "links": []
+}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceListOfComplianceBreachedOrderInfo"
+                },
+                "example": {
+  "values": [
+    {
+      "orderId": {
+        "scope": "MyScope",
+        "code": "MyPortfolioCode"
+      },
+      "listRuleResult": [
+        {
+          "ruleId": "0897-6574-1324",
+          "portfolio": {
+            "scope": "MyScope",
+            "code": "MyPortfolioCode"
+          },
+          "passed": false,
+          "resultValue": 0.0,
+          "ruleLowerLimit": 0.0,
+          "ruleUpperLimit": 0.0
+        }
+      ]
+    }
+  ],
+  "href": "https://myco.lusid.com/api/api/compliance/breached/some-run-id",
+  "links": []
 }
               }
             }
@@ -9933,7 +9920,7 @@
       "instrument/default/Figi": "BBG001S6PJ31"
     },
     "description": "2-for-1 stock split of instrument BBG001S6PJ31",
-    "eventDetail": {
+    "instrumentEvent": {
       "announcementDate": "2018-03-01T00:00:00.0000000+00:00",
       "exDate": "2018-06-01T00:00:00.0000000+00:00",
       "recordDate": "2018-06-02T00:00:00.0000000+00:00",
@@ -9973,7 +9960,7 @@
       "instrument/default/Figi": "BBG001S6PJ31"
     },
     "description": "2-for-1 stock split of instrument BBG001S6PJ31",
-    "eventDetail": {
+    "instrumentEvent": {
       "announcementDate": "2018-03-01T00:00:00.0000000+00:00",
       "exDate": "2018-06-01T00:00:00.0000000+00:00",
       "recordDate": "2018-06-02T00:00:00.0000000+00:00",
@@ -10013,7 +10000,7 @@
       "instrument/default/Figi": "BBG001S6PJ31"
     },
     "description": "2-for-1 stock split of instrument BBG001S6PJ31",
-    "eventDetail": {
+    "instrumentEvent": {
       "announcementDate": "2018-03-01T00:00:00.0000000+00:00",
       "exDate": "2018-06-01T00:00:00.0000000+00:00",
       "recordDate": "2018-06-02T00:00:00.0000000+00:00",
@@ -10053,7 +10040,7 @@
       "instrument/default/Figi": "BBG001S6PJ31"
     },
     "description": "2-for-1 stock split of instrument BBG001S6PJ31",
-    "eventDetail": {
+    "instrumentEvent": {
       "announcementDate": "2018-03-01T00:00:00.0000000+00:00",
       "exDate": "2018-06-01T00:00:00.0000000+00:00",
       "recordDate": "2018-06-02T00:00:00.0000000+00:00",
@@ -12894,7 +12881,8 @@
       },
       "traversalDirection": "Out",
       "traversalDescription": "Outward relationship description",
-      "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00"
+      "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     }
   ],
   "links": []
@@ -12930,7 +12918,8 @@
       },
       "traversalDirection": "Out",
       "traversalDescription": "Outward relationship description",
-      "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00"
+      "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     }
   ],
   "links": []
@@ -12966,7 +12955,8 @@
       },
       "traversalDirection": "Out",
       "traversalDescription": "Outward relationship description",
-      "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00"
+      "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     }
   ],
   "links": []
@@ -16659,6 +16649,162 @@
         "x-fbn-apistatus": "Stable"
       }
     },
+    "/api/instruments/$delete": {
+      "post": {
+        "tags": [
+          "Instruments"
+        ],
+        "summary": "[EXPERIMENTAL] DeleteInstruments: Soft or hard delete multiple instruments",
+        "description": "Deletes a number of instruments identified by LusidInstrumentId.\r\n            \r\nSoft deletion marks the instrument as inactive so it can no longer be referenced when creating or updating transactions or holdings. You can still query existing transactions and holdings related to the inactive instrument.\r\n            \r\nIn addition to the above behaviour, hard deletion: (i) completely removes all external identifiers from the instrument; (ii) marks the instrument as 'Deleted'; (iii) prepends the instrument's name with 'DELETED '; (iv) prevents the instrument from being returned in list instruments queries.\r\n            \r\nFollowing hard deletion, an instrument may only be retrieved by making a direct get instrument request for the LusidInstrumentId. Instrument deletion cannot be undone. Please note that currency instruments cannot currently be deleted.\n\nThe maximum number of instruments that this method can delete per request is 2,000.",
+        "operationId": "DeleteInstruments",
+        "parameters": [
+          {
+            "name": "deleteMode",
+            "in": "query",
+            "description": "The delete mode to use (defaults to 'Soft').",
+            "schema": {
+              "enum": [
+                "Soft",
+                "Hard"
+              ],
+              "type": "string",
+              "description": "The available values are: Soft, Hard"
+            },
+            "x-nullable": true
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "The scope in which the instruments lie. When not supplied the scope is 'default'.",
+            "schema": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9\\-_]+$",
+              "type": "string",
+              "description": "The scope in which the instruments lie. When not supplied the scope is 'default'.",
+              "default": "default",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The list of lusidInstrumentId's to delete.",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "The list of lusidInstrumentId's to delete."
+              },
+              "example": [
+  "LUID_12345678",
+  "LUID_87654321"
+]
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "The list of lusidInstrumentId's to delete."
+              },
+              "example": [
+  "LUID_12345678",
+  "LUID_87654321"
+]
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "The list of lusidInstrumentId's to delete."
+              },
+              "example": [
+  "LUID_12345678",
+  "LUID_87654321"
+]
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "The list of lusidInstrumentId's to delete."
+              },
+              "example": [
+  "LUID_12345678",
+  "LUID_87654321"
+]
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The datetime that the instruments were deleted",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteInstrumentsResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteInstrumentsResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteInstrumentsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The details of the input related failure",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": [ ]
+          }
+        ],
+        "x-fbn-apistatus": "Experimental"
+      }
+    },
     "/api/instruments/$get": {
       "post": {
         "tags": [
@@ -17614,26 +17760,26 @@
             "name": "recipeScope",
             "in": "query",
             "description": "The scope of the valuation recipe being used to generate the payment diary",
+            "required": true,
             "schema": {
               "maxLength": 64,
               "minLength": 1,
               "pattern": "^[a-zA-Z0-9\\-_]+$",
               "type": "string",
-              "description": "The scope of the valuation recipe being used to generate the payment diary",
-              "nullable": true
+              "description": "The scope of the valuation recipe being used to generate the payment diary"
             }
           },
           {
             "name": "recipeCode",
             "in": "query",
             "description": "The code of the valuation recipe being used to generate the payment diary",
+            "required": true,
             "schema": {
               "maxLength": 64,
               "minLength": 1,
               "pattern": "^[a-zA-Z0-9\\-_]+$",
               "type": "string",
-              "description": "The code of the valuation recipe being used to generate the payment diary",
-              "nullable": true
+              "description": "The code of the valuation recipe being used to generate the payment diary"
             }
           },
           {
@@ -18582,7 +18728,7 @@
         "tags": [
           "Instruments"
         ],
-        "summary": "[EXPERIMENTAL] GetInstrumentRelationships: Get Instrument relationships",
+        "summary": "[EARLY ACCESS] GetInstrumentRelationships: Get Instrument relationships",
         "description": "Get relationships for a particular Instrument.",
         "operationId": "GetInstrumentRelationships",
         "parameters": [
@@ -18717,7 +18863,8 @@
       },
       "traversalDirection": "In",
       "traversalDescription": "issued by",
-      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00"
+      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     }
   ],
   "links": []
@@ -18753,7 +18900,8 @@
       },
       "traversalDirection": "In",
       "traversalDescription": "issued by",
-      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00"
+      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     }
   ],
   "links": []
@@ -18789,7 +18937,8 @@
       },
       "traversalDirection": "In",
       "traversalDescription": "issued by",
-      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00"
+      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     }
   ],
   "links": []
@@ -18833,7 +18982,7 @@
             "oauth2": [ ]
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "EarlyAccess"
       }
     },
     "/api/legalentities": {
@@ -19336,7 +19485,7 @@
         "tags": [
           "Legal Entities"
         ],
-        "summary": "[EXPERIMENTAL] ListAllLegalEntities: List Legal Entities",
+        "summary": "[EARLY ACCESS] ListAllLegalEntities: List Legal Entities",
         "description": "List all legal entities which the user is entitled to see.",
         "operationId": "ListAllLegalEntities",
         "parameters": [
@@ -19815,7 +19964,7 @@
             "oauth2": [ ]
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "EarlyAccess"
       }
     },
     "/api/legalentities/{idTypeScope}/{idTypeCode}": {
@@ -21453,7 +21602,7 @@
           "Legal Entities"
         ],
         "summary": "[EXPERIMENTAL] PatchLegalEntityAccessMetadata: Patch Access Metadata rules for a Legal Entity.",
-        "description": "Patch Legal Entity Access Metadata Rules in a single scope.\r\nThe behaviour is defined by the JSON Patch specification.\r\n            \r\nCurrently only 'add' is a supported operation on the patch document\r\nCurrently only valid metadata keys are supported paths on the patch document\r\n            \r\nThe response will return any affected Legal Entity Access Metadata rules or a failure message if unsuccessful.\r\n            \r\nIt is important to always check to verify success (or failure).\r\n            \r\nMultiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.",
+        "description": "Patch Legal Entity Access Metadata Rules in a single scope.\r\nThe behaviour is defined by the JSON Patch specification.\r\n            \r\nCurrently only 'add' is a supported operation on the patch document\r\n\r\nCurrently only valid metadata keys are supported paths on the patch document\r\n            \r\nThe response will return any affected Legal Entity Access Metadata rules or a failure message if unsuccessful.\r\n            \r\nIt is important to always check to verify success (or failure).\r\n            \r\nMultiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.",
         "operationId": "PatchLegalEntityAccessMetadata",
         "parameters": [
           {
@@ -21526,7 +21675,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Operation"
+                  "$ref": "#/components/schemas/AccessMetadataOperation"
                 },
                 "description": "The Json Patch document"
               },
@@ -21547,7 +21696,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Operation"
+                  "$ref": "#/components/schemas/AccessMetadataOperation"
                 },
                 "description": "The Json Patch document"
               },
@@ -21568,7 +21717,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Operation"
+                  "$ref": "#/components/schemas/AccessMetadataOperation"
                 },
                 "description": "The Json Patch document"
               },
@@ -21589,7 +21738,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Operation"
+                  "$ref": "#/components/schemas/AccessMetadataOperation"
                 },
                 "description": "The Json Patch document"
               },
@@ -23100,7 +23249,7 @@
         "tags": [
           "Legal Entities"
         ],
-        "summary": "[EXPERIMENTAL] GetLegalEntityRelationships: Get Relationships for Legal Entity",
+        "summary": "[EARLY ACCESS] GetLegalEntityRelationships: Get Relationships for Legal Entity",
         "description": "Get Relationships for the specified Legal Entity",
         "operationId": "GetLegalEntityRelationships",
         "parameters": [
@@ -23235,7 +23384,8 @@
       },
       "traversalDirection": "Out",
       "traversalDescription": "is legal representative for",
-      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00"
+      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     }
   ],
   "href": "https://example.com",
@@ -23272,7 +23422,8 @@
       },
       "traversalDirection": "Out",
       "traversalDescription": "is legal representative for",
-      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00"
+      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     }
   ],
   "href": "https://example.com",
@@ -23309,7 +23460,8 @@
       },
       "traversalDirection": "Out",
       "traversalDescription": "is legal representative for",
-      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00"
+      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     }
   ],
   "href": "https://example.com",
@@ -23354,7 +23506,7 @@
             "oauth2": [ ]
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "EarlyAccess"
       }
     },
     "/api/metadata/access/resources": {
@@ -26234,7 +26386,7 @@
       "instrumentIdentifiers": {
         "instrument/default/Currency": "GBP"
       },
-      "quantity": 100,
+      "quantity": 100.0,
       "side": "Buy",
       "orderBookId": {
         "scope": "MyScope",
@@ -26286,7 +26438,7 @@
       "instrumentIdentifiers": {
         "instrument/default/Currency": "GBP"
       },
-      "quantity": 100,
+      "quantity": 100.0,
       "side": "Buy",
       "orderBookId": {
         "scope": "MyScope",
@@ -26338,7 +26490,7 @@
       "instrumentIdentifiers": {
         "instrument/default/Currency": "GBP"
       },
-      "quantity": 100,
+      "quantity": 100.0,
       "side": "Buy",
       "orderBookId": {
         "scope": "MyScope",
@@ -26390,7 +26542,7 @@
       "instrumentIdentifiers": {
         "instrument/default/Currency": "GBP"
       },
-      "quantity": 100,
+      "quantity": 100.0,
       "side": "Buy",
       "orderBookId": {
         "scope": "MyScope",
@@ -30887,7 +31039,7 @@
           "Persons"
         ],
         "summary": "[EXPERIMENTAL] PatchPersonAccessMetadata: Patch Access Metadata rules for a Person.",
-        "description": "Patch Person Access Metadata Rules in a single scope.\r\nThe behaviour is defined by the JSON Patch specification.\r\n            \r\nCurrently only 'add' is a supported operation on the patch document\r\nCurrently only valid metadata keys are supported paths on the patch document\r\n            \r\nThe response will return any affected Person Access Metadata rules or a failure message if unsuccessful.\r\n            \r\nIt is important to always check to verify success (or failure).\r\n            \r\nMultiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.",
+        "description": "Patch Person Access Metadata Rules in a single scope.\r\nThe behaviour is defined by the JSON Patch specification.\r\n            \r\nCurrently only 'add' is a supported operation on the patch document.\r\n\r\nCurrently only valid metadata keys are supported paths on the patch document.\r\n            \r\nThe response will return any affected Person Access Metadata rules or a failure message if unsuccessful.\r\n            \r\nIt is important to always check to verify success (or failure).\r\n            \r\nMultiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.",
         "operationId": "PatchPersonAccessMetadata",
         "parameters": [
           {
@@ -30954,7 +31106,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Operation"
+                  "$ref": "#/components/schemas/AccessMetadataOperation"
                 },
                 "description": "The Json Patch document"
               },
@@ -30975,7 +31127,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Operation"
+                  "$ref": "#/components/schemas/AccessMetadataOperation"
                 },
                 "description": "The Json Patch document"
               },
@@ -30996,7 +31148,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Operation"
+                  "$ref": "#/components/schemas/AccessMetadataOperation"
                 },
                 "description": "The Json Patch document"
               },
@@ -31017,7 +31169,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Operation"
+                  "$ref": "#/components/schemas/AccessMetadataOperation"
                 },
                 "description": "The Json Patch document"
               },
@@ -32416,7 +32568,7 @@
         "tags": [
           "Persons"
         ],
-        "summary": "[EXPERIMENTAL] GetPersonRelationships: Get Relationships for Person",
+        "summary": "[EARLY ACCESS] GetPersonRelationships: Get Relationships for Person",
         "description": "Get relationships for the specified person.",
         "operationId": "GetPersonRelationships",
         "parameters": [
@@ -32550,7 +32702,8 @@
       },
       "traversalDirection": "In",
       "traversalDescription": "can trade with portfolio",
-      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00"
+      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     }
   ],
   "links": []
@@ -32585,7 +32738,8 @@
       },
       "traversalDirection": "In",
       "traversalDescription": "can trade with portfolio",
-      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00"
+      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     }
   ],
   "links": []
@@ -32620,7 +32774,8 @@
       },
       "traversalDirection": "In",
       "traversalDescription": "can trade with portfolio",
-      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00"
+      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     }
   ],
   "links": []
@@ -32664,7 +32819,7 @@
             "oauth2": [ ]
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "EarlyAccess"
       }
     },
     "/api/placements": {
@@ -36470,7 +36625,7 @@
           "Portfolio Groups"
         ],
         "summary": "[EXPERIMENTAL] PatchPortfolioGroupAccessMetadata: Patch Access Metadata rules for a Portfolio Group.",
-        "description": "Patch Portfolio Group Access Metadata Rules in a single scope.\r\nThe behaviour is defined by the JSON Patch specification.\r\n            \r\nCurrently only 'add' is a supported operation on the patch document\r\nCurrently only valid metadata keys are supported paths on the patch document\r\n            \r\nThe response will return any affected Portfolio Group Access Metadata rules or a failure message if unsuccessful.\r\n            \r\nIt is important to always check to verify success (or failure).\r\n            \r\nMultiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.",
+        "description": "Patch Portfolio Group Access Metadata Rules in a single scope.\r\nThe behaviour is defined by the JSON Patch specification.\r\n            \r\nCurrently only 'add' is a supported operation on the patch document.\r\n\r\nCurrently only valid metadata keys are supported paths on the patch document.\r\n            \r\nThe response will return any affected Portfolio Group Access Metadata rules or a failure message if unsuccessful.\r\n            \r\nIt is important to always check to verify success (or failure).\r\n            \r\nMultiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.",
         "operationId": "PatchPortfolioGroupAccessMetadata",
         "parameters": [
           {
@@ -36530,7 +36685,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Operation"
+                  "$ref": "#/components/schemas/AccessMetadataOperation"
                 },
                 "description": "The Json patch document"
               },
@@ -36551,7 +36706,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Operation"
+                  "$ref": "#/components/schemas/AccessMetadataOperation"
                 },
                 "description": "The Json patch document"
               },
@@ -36572,7 +36727,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Operation"
+                  "$ref": "#/components/schemas/AccessMetadataOperation"
                 },
                 "description": "The Json patch document"
               },
@@ -36593,7 +36748,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Operation"
+                  "$ref": "#/components/schemas/AccessMetadataOperation"
                 },
                 "description": "The Json patch document"
               },
@@ -38387,7 +38542,7 @@
         "tags": [
           "Portfolio Groups"
         ],
-        "summary": "[EXPERIMENTAL] GetPortfolioGroupRelationships: Get Relationships for Portfolio Group",
+        "summary": "[EARLY ACCESS] GetPortfolioGroupRelationships: Get Relationships for Portfolio Group",
         "description": "Get relationships for the specified Portfolio Group",
         "operationId": "GetPortfolioGroupRelationships",
         "parameters": [
@@ -38508,7 +38663,8 @@
       },
       "traversalDirection": "Out",
       "traversalDescription": "can be traded by",
-      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00"
+      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     }
   ],
   "links": []
@@ -38544,7 +38700,8 @@
       },
       "traversalDirection": "Out",
       "traversalDescription": "can be traded by",
-      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00"
+      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     }
   ],
   "links": []
@@ -38580,7 +38737,8 @@
       },
       "traversalDirection": "Out",
       "traversalDescription": "can be traded by",
-      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00"
+      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     }
   ],
   "links": []
@@ -38624,7 +38782,7 @@
             "oauth2": [ ]
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "EarlyAccess"
       }
     },
     "/api/portfoliogroups/{scope}/{code}/subgroups": {
@@ -43020,7 +43178,7 @@
           "Portfolios"
         ],
         "summary": "[EXPERIMENTAL] PatchPortfolioAccessMetadata: Patch Access Metadata rules for a Portfolio.",
-        "description": "Patch Portfolio Access Metadata Rules in a single scope.\r\nThe behaviour is defined by the JSON Patch specification.\r\n            \r\nCurrently only 'add' is a supported operation on the patch document\r\nCurrently only valid metadata keys are supported paths on the patch document\r\n\r\nThe response will return any affected Portfolio Access Metadata rules or a failure message if unsuccessful.\r\n\r\nIt is important to always check to verify success (or failure).\r\n            \r\nMultiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched",
+        "description": "Patch Portfolio Access Metadata Rules in a single scope.\r\nThe behaviour is defined by the JSON Patch specification.\r\n            \r\nCurrently only 'add' is a supported operation on the patch document.\r\n\r\nCurrently only valid metadata keys are supported paths on the patch document.\r\n\r\nThe response will return any affected Portfolio Access Metadata rules or a failure message if unsuccessful.\r\n\r\nIt is important to always check to verify success (or failure).\r\n            \r\nMultiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.",
         "operationId": "PatchPortfolioAccessMetadata",
         "parameters": [
           {
@@ -43080,7 +43238,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Operation"
+                  "$ref": "#/components/schemas/AccessMetadataOperation"
                 },
                 "description": "The Json Patch document"
               },
@@ -43101,7 +43259,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Operation"
+                  "$ref": "#/components/schemas/AccessMetadataOperation"
                 },
                 "description": "The Json Patch document"
               },
@@ -43122,7 +43280,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Operation"
+                  "$ref": "#/components/schemas/AccessMetadataOperation"
                 },
                 "description": "The Json Patch document"
               },
@@ -43143,7 +43301,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Operation"
+                  "$ref": "#/components/schemas/AccessMetadataOperation"
                 },
                 "description": "The Json Patch document"
               },
@@ -44840,7 +44998,7 @@
         "tags": [
           "Portfolios"
         ],
-        "summary": "[EXPERIMENTAL] GetPortfolioRelationships: Get portfolio relationships",
+        "summary": "[EARLY ACCESS] GetPortfolioRelationships: Get portfolio relationships",
         "description": "Get relationships for a particular portfolio.",
         "operationId": "GetPortfolioRelationships",
         "parameters": [
@@ -44961,7 +45119,8 @@
       },
       "traversalDirection": "Out",
       "traversalDescription": "can be traded by",
-      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00"
+      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     },
     {
       "relationshipDefinitionId": {
@@ -44986,7 +45145,8 @@
       },
       "traversalDirection": "In",
       "traversalDescription": "can trade with portfolio",
-      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00"
+      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     }
   ],
   "links": []
@@ -45022,7 +45182,8 @@
       },
       "traversalDirection": "Out",
       "traversalDescription": "can be traded by",
-      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00"
+      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     },
     {
       "relationshipDefinitionId": {
@@ -45047,7 +45208,8 @@
       },
       "traversalDirection": "In",
       "traversalDescription": "can trade with portfolio",
-      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00"
+      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     }
   ],
   "links": []
@@ -45083,7 +45245,8 @@
       },
       "traversalDirection": "Out",
       "traversalDescription": "can be traded by",
-      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00"
+      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     },
     {
       "relationshipDefinitionId": {
@@ -45108,7 +45271,8 @@
       },
       "traversalDirection": "In",
       "traversalDescription": "can trade with portfolio",
-      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00"
+      "effectiveFrom": "2019-01-01T12:00:00.0000000+00:00",
+      "effectiveUntil": "9999-12-31T23:59:59.9999999+00:00"
     }
   ],
   "links": []
@@ -45152,7 +45316,7 @@
             "oauth2": [ ]
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "EarlyAccess"
       }
     },
     "/api/portfolios/{scope}/{code}/returns/$aggregated": {
@@ -57183,17 +57347,74 @@
               "text/plain": {
                 "schema": {
                   "$ref": "#/components/schemas/UpsertPortfolioTransactionsResponse"
-                }
+                },
+                "example": {
+  "version": {
+    "effectiveFrom": "2018-03-05T11:32:15.0000000+00:00",
+    "asAtDate": "2022-03-05T10:09:01.0000000+00:00"
+  },
+  "metadata": {
+    "warnings": [
+      {
+        "type": "TransactionTypesNotFound",
+        "description": "No transaction types could be found for the listed transactions",
+        "identifierType": "TransactionId",
+        "identifiers": [
+          "Transaction-001",
+          "Transaction-123"
+        ]
+      }
+    ]
+  }
+}
               },
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UpsertPortfolioTransactionsResponse"
-                }
+                },
+                "example": {
+  "version": {
+    "effectiveFrom": "2018-03-05T11:32:15.0000000+00:00",
+    "asAtDate": "2022-03-05T10:09:01.0000000+00:00"
+  },
+  "metadata": {
+    "warnings": [
+      {
+        "type": "TransactionTypesNotFound",
+        "description": "No transaction types could be found for the listed transactions",
+        "identifierType": "TransactionId",
+        "identifiers": [
+          "Transaction-001",
+          "Transaction-123"
+        ]
+      }
+    ]
+  }
+}
               },
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UpsertPortfolioTransactionsResponse"
-                }
+                },
+                "example": {
+  "version": {
+    "effectiveFrom": "2018-03-05T11:32:15.0000000+00:00",
+    "asAtDate": "2022-03-05T10:09:01.0000000+00:00"
+  },
+  "metadata": {
+    "warnings": [
+      {
+        "type": "TransactionTypesNotFound",
+        "description": "No transaction types could be found for the listed transactions",
+        "identifierType": "TransactionId",
+        "identifiers": [
+          "Transaction-001",
+          "Transaction-123"
+        ]
+      }
+    ]
+  }
+}
               }
             }
           },
@@ -67641,6 +67862,362 @@
         "x-fbn-apistatus": "Stable"
       }
     },
+    "/api/transactionportfolios/{scope}/{code}/holdings/$lookthrough": {
+      "get": {
+        "tags": [
+          "Transaction Portfolios"
+        ],
+        "summary": "[EXPERIMENTAL] LookThroughHoldings: Get LookThrough Holdings",
+        "description": "Calculate holdings for a transaction portfolio with lookthrough",
+        "operationId": "LookThroughHoldings",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "path",
+            "description": "The scope of the transaction portfolio.",
+            "required": true,
+            "schema": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9\\-_]+$",
+              "type": "string",
+              "description": "The scope of the transaction portfolio.",
+              "nullable": true
+            }
+          },
+          {
+            "name": "code",
+            "in": "path",
+            "description": "The code of the transaction portfolio. Together with the scope this uniquely identifies\r\n            the transaction portfolio.",
+            "required": true,
+            "schema": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9\\-_]+$",
+              "type": "string",
+              "description": "The code of the transaction portfolio. Together with the scope this uniquely identifies\r\n            the transaction portfolio.",
+              "nullable": true
+            }
+          },
+          {
+            "name": "effectiveAt",
+            "in": "query",
+            "description": "The effective datetime or cut label at which to retrieve the holdings of the transaction\r\n            portfolio. Defaults to the current LUSID system datetime if not specified.",
+            "schema": {
+              "type": "string",
+              "description": "The effective datetime or cut label at which to retrieve the holdings of the transaction\r\n            portfolio. Defaults to the current LUSID system datetime if not specified.",
+              "format": "dateorcutlabel",
+              "nullable": true
+            }
+          },
+          {
+            "name": "asAt",
+            "in": "query",
+            "description": "The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults\r\n            to return the latest version if not specified.",
+            "schema": {
+              "type": "string",
+              "description": "The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults\r\n            to return the latest version if not specified.",
+              "format": "date-time",
+              "nullable": true
+            },
+            "x-nullable": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Expression to filter the result set.\r\n            For example, to filter on the Holding Type, use \"holdingType eq 'p'\".\r\n            For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.",
+            "schema": {
+              "maxLength": 16384,
+              "minLength": 0,
+              "pattern": "^[\\s\\S]*$",
+              "type": "string",
+              "description": "Expression to filter the result set.\r\n            For example, to filter on the Holding Type, use \"holdingType eq 'p'\".\r\n            For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.",
+              "nullable": true
+            }
+          },
+          {
+            "name": "propertyKeys",
+            "in": "query",
+            "description": "A list of property keys from the \"Instrument\" or \"Holding\" domain to decorate onto\r\n            holdings. These must have the format {domain}/{scope}/{code}, for example \"Instrument/system/Name\" or \"Holding/system/Cost\".",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "The key that uniquely identifies the property. It has the format {domain}/{scope}/{code}."
+              },
+              "description": "A list of property keys from the \"Instrument\" or \"Holding\" domain to decorate onto\r\n            holdings. These must have the format {domain}/{scope}/{code}, for example \"Instrument/system/Name\" or \"Holding/system/Cost\".",
+              "nullable": true
+            },
+            "x-nullable": true
+          },
+          {
+            "name": "quotesScope",
+            "in": "query",
+            "description": "The scope containing the quotes with the FX rates used for currency conversion.",
+            "schema": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9\\-_]+$",
+              "type": "string",
+              "description": "The scope containing the quotes with the FX rates used for currency conversion.",
+              "nullable": true
+            }
+          },
+          {
+            "name": "slice",
+            "in": "query",
+            "description": "When running LookThrough, define this slice as the root slice in the portfolio to look through from.",
+            "schema": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9\\-_]+$",
+              "type": "string",
+              "description": "When running LookThrough, define this slice as the root slice in the portfolio to look through from.",
+              "nullable": true
+            }
+          },
+          {
+            "name": "shareClass",
+            "in": "query",
+            "description": "When running LookThrough, use this along with the slice parameter to specify\r\n            the root share class in the slice in the portfolio to look through from. The slice parameter is a prerequisite\r\n            for this parameter to be valid.",
+            "schema": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9\\-_]+$",
+              "type": "string",
+              "description": "When running LookThrough, use this along with the slice parameter to specify\r\n            the root share class in the slice in the portfolio to look through from. The slice parameter is a prerequisite\r\n            for this parameter to be valid.",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The holdings and version of the specified transaction portfolio with lookthrough",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/VersionedResourceListOfPortfolioHolding"
+                },
+                "example": {
+  "version": {
+    "effectiveFrom": "2019-03-05T12:00:00.0000000+00:00",
+    "asAtDate": "2019-03-05T12:00:00.0000000+00:00"
+  },
+  "values": [
+    {
+      "instrumentScope": "default",
+      "instrumentUid": "LUID_XH4GNUEX",
+      "subHoldingKeys": {
+        "transaction/Algo/Name": {
+          "key": "Transaction/Algo/Name",
+          "value": {
+            "labelValue": "Algo1"
+          }
+        }
+      },
+      "properties": {
+        "transaction/default/SourcePortfolioId": {
+          "key": "Transaction/default/SourcePortfolioId",
+          "value": {
+            "labelValue": "DEMO-PORTFOLIO-ID"
+          },
+          "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00"
+        },
+        "transaction/default/SourcePortfolioScope": {
+          "key": "Transaction/default/SourcePortfolioScope",
+          "value": {
+            "labelValue": "DEMO-SCOPE"
+          },
+          "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00"
+        },
+        "holding/default/InvestmentFundLineage": {
+          "key": "Holding/default/InvestmentFundLineage",
+          "value": {
+            "labelValue": "FeederFund/Master:core:R"
+          },
+          "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00"
+        }
+      },
+      "holdingType": "P",
+      "units": 10.0,
+      "settledUnits": 10.0,
+      "cost": {
+        "amount": 2.5,
+        "currency": "GBP"
+      },
+      "costPortfolioCcy": {
+        "amount": 2.5,
+        "currency": "GBP"
+      },
+      "currency": "ZZZ"
+    }
+  ],
+  "links": []
+}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VersionedResourceListOfPortfolioHolding"
+                },
+                "example": {
+  "version": {
+    "effectiveFrom": "2019-03-05T12:00:00.0000000+00:00",
+    "asAtDate": "2019-03-05T12:00:00.0000000+00:00"
+  },
+  "values": [
+    {
+      "instrumentScope": "default",
+      "instrumentUid": "LUID_XH4GNUEX",
+      "subHoldingKeys": {
+        "transaction/Algo/Name": {
+          "key": "Transaction/Algo/Name",
+          "value": {
+            "labelValue": "Algo1"
+          }
+        }
+      },
+      "properties": {
+        "transaction/default/SourcePortfolioId": {
+          "key": "Transaction/default/SourcePortfolioId",
+          "value": {
+            "labelValue": "DEMO-PORTFOLIO-ID"
+          },
+          "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00"
+        },
+        "transaction/default/SourcePortfolioScope": {
+          "key": "Transaction/default/SourcePortfolioScope",
+          "value": {
+            "labelValue": "DEMO-SCOPE"
+          },
+          "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00"
+        },
+        "holding/default/InvestmentFundLineage": {
+          "key": "Holding/default/InvestmentFundLineage",
+          "value": {
+            "labelValue": "FeederFund/Master:core:R"
+          },
+          "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00"
+        }
+      },
+      "holdingType": "P",
+      "units": 10.0,
+      "settledUnits": 10.0,
+      "cost": {
+        "amount": 2.5,
+        "currency": "GBP"
+      },
+      "costPortfolioCcy": {
+        "amount": 2.5,
+        "currency": "GBP"
+      },
+      "currency": "ZZZ"
+    }
+  ],
+  "links": []
+}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VersionedResourceListOfPortfolioHolding"
+                },
+                "example": {
+  "version": {
+    "effectiveFrom": "2019-03-05T12:00:00.0000000+00:00",
+    "asAtDate": "2019-03-05T12:00:00.0000000+00:00"
+  },
+  "values": [
+    {
+      "instrumentScope": "default",
+      "instrumentUid": "LUID_XH4GNUEX",
+      "subHoldingKeys": {
+        "transaction/Algo/Name": {
+          "key": "Transaction/Algo/Name",
+          "value": {
+            "labelValue": "Algo1"
+          }
+        }
+      },
+      "properties": {
+        "transaction/default/SourcePortfolioId": {
+          "key": "Transaction/default/SourcePortfolioId",
+          "value": {
+            "labelValue": "DEMO-PORTFOLIO-ID"
+          },
+          "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00"
+        },
+        "transaction/default/SourcePortfolioScope": {
+          "key": "Transaction/default/SourcePortfolioScope",
+          "value": {
+            "labelValue": "DEMO-SCOPE"
+          },
+          "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00"
+        },
+        "holding/default/InvestmentFundLineage": {
+          "key": "Holding/default/InvestmentFundLineage",
+          "value": {
+            "labelValue": "FeederFund/Master:core:R"
+          },
+          "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00"
+        }
+      },
+      "holdingType": "P",
+      "units": 10.0,
+      "settledUnits": 10.0,
+      "cost": {
+        "amount": 2.5,
+        "currency": "GBP"
+      },
+      "costPortfolioCcy": {
+        "amount": 2.5,
+        "currency": "GBP"
+      },
+      "currency": "ZZZ"
+    }
+  ],
+  "links": []
+}
+              }
+            }
+          },
+          "400": {
+            "description": "The details of the input related failure",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": [ ]
+          }
+        ],
+        "x-fbn-apistatus": "Experimental"
+      }
+    },
     "/api/transactionportfolios/{scope}/{code}/holdingsadjustments": {
       "get": {
         "tags": [
@@ -67837,14 +68414,14 @@
           {
             "name": "propertyKeys",
             "in": "query",
-            "description": "A list of property keys from the â€˜Instrument' domain to decorate onto holdings adjustments.\r\n            These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.\r\n            Note that properties from the 'Holdingâ€™ domain are automatically returned.",
+            "description": "A list of property keys from the ‘Instrument' domain to decorate onto holdings adjustments.\r\n            These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.\r\n            Note that properties from the 'Holding’ domain are automatically returned.",
             "schema": {
               "type": "array",
               "items": {
                 "type": "string",
                 "description": "The key that uniquely identifies the property. It has the format {domain}/{scope}/{code}."
               },
-              "description": "A list of property keys from the â€˜Instrument' domain to decorate onto holdings adjustments.\r\n            These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.\r\n            Note that properties from the 'Holdingâ€™ domain are automatically returned.",
+              "description": "A list of property keys from the ‘Instrument' domain to decorate onto holdings adjustments.\r\n            These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.\r\n            Note that properties from the 'Holding’ domain are automatically returned.",
               "nullable": true
             },
             "x-nullable": true
@@ -69111,17 +69688,74 @@
               "text/plain": {
                 "schema": {
                   "$ref": "#/components/schemas/UpsertPortfolioTransactionsResponse"
-                }
+                },
+                "example": {
+  "version": {
+    "effectiveFrom": "2018-03-05T11:32:15.0000000+00:00",
+    "asAtDate": "2022-03-05T10:09:01.0000000+00:00"
+  },
+  "metadata": {
+    "warnings": [
+      {
+        "type": "TransactionTypesNotFound",
+        "description": "No transaction types could be found for the listed transactions",
+        "identifierType": "TransactionId",
+        "identifiers": [
+          "Transaction-001",
+          "Transaction-123"
+        ]
+      }
+    ]
+  }
+}
               },
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UpsertPortfolioTransactionsResponse"
-                }
+                },
+                "example": {
+  "version": {
+    "effectiveFrom": "2018-03-05T11:32:15.0000000+00:00",
+    "asAtDate": "2022-03-05T10:09:01.0000000+00:00"
+  },
+  "metadata": {
+    "warnings": [
+      {
+        "type": "TransactionTypesNotFound",
+        "description": "No transaction types could be found for the listed transactions",
+        "identifierType": "TransactionId",
+        "identifiers": [
+          "Transaction-001",
+          "Transaction-123"
+        ]
+      }
+    ]
+  }
+}
               },
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UpsertPortfolioTransactionsResponse"
-                }
+                },
+                "example": {
+  "version": {
+    "effectiveFrom": "2018-03-05T11:32:15.0000000+00:00",
+    "asAtDate": "2022-03-05T10:09:01.0000000+00:00"
+  },
+  "metadata": {
+    "warnings": [
+      {
+        "type": "TransactionTypesNotFound",
+        "description": "No transaction types could be found for the listed transactions",
+        "identifierType": "TransactionId",
+        "identifiers": [
+          "Transaction-001",
+          "Transaction-123"
+        ]
+      }
+    ]
+  }
+}
               }
             }
           },
@@ -70143,7 +70777,7 @@
           "Transaction Portfolios"
         ],
         "summary": "[EXPERIMENTAL] LookThroughTransactions: Look through transactions",
-        "description": "Retrieve all the transactions that occurred during a particular time interval.\r\n            \r\nIf the portfolio is part of a fund as defined in Fund Accounting documents, the transactions returned are the\r\nunion set of all transactions in portfolios of the same type, in any funds invested in by the portfolio's fund\r\n(and any funds invested in from that fund, etc.).\r\nThe transactions will be scaled according to the ratio of the value of the investment in the fund to the NAV of the fund itself.",
+        "description": "Retrieve all the transactions that occurred during a particular time interval.\r\n\r\nIf the portfolio is part of a fund as defined in Fund Accounting documents, the transactions returned are the\r\nunion set of all transactions in portfolios of the same type, in any funds invested in by the portfolio's fund\r\n(and any funds invested in from that fund, etc.).\r\nThe transactions will be scaled according to the ratio of the value of the investment in the fund to the NAV of the fund itself.",
         "operationId": "LookThroughTransactions",
         "parameters": [
           {
@@ -70163,24 +70797,24 @@
           {
             "name": "code",
             "in": "path",
-            "description": "The code of the transaction portfolio. Together with the scope this uniquely identifies\r\n             the transaction portfolio.",
+            "description": "The code of the transaction portfolio. Together with the scope this uniquely identifies\r\n            the transaction portfolio.",
             "required": true,
             "schema": {
               "maxLength": 64,
               "minLength": 1,
               "pattern": "^[a-zA-Z0-9\\-_]+$",
               "type": "string",
-              "description": "The code of the transaction portfolio. Together with the scope this uniquely identifies\r\n             the transaction portfolio.",
+              "description": "The code of the transaction portfolio. Together with the scope this uniquely identifies\r\n            the transaction portfolio.",
               "nullable": true
             }
           },
           {
             "name": "fromTransactionDate",
             "in": "query",
-            "description": "The lower bound effective datetime or cut label (inclusive) from which to retrieve transactions.\r\n             There is no lower bound if this is not specified.",
+            "description": "The lower bound effective datetime or cut label (inclusive) from which to retrieve transactions.\r\n            There is no lower bound if this is not specified.",
             "schema": {
               "type": "string",
-              "description": "The lower bound effective datetime or cut label (inclusive) from which to retrieve transactions.\r\n             There is no lower bound if this is not specified.",
+              "description": "The lower bound effective datetime or cut label (inclusive) from which to retrieve transactions.\r\n            There is no lower bound if this is not specified.",
               "format": "dateorcutlabel",
               "nullable": true
             }
@@ -70188,10 +70822,10 @@
           {
             "name": "toTransactionDate",
             "in": "query",
-            "description": "The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.\r\n             There is no upper bound if this is not specified.",
+            "description": "The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.\r\n            There is no upper bound if this is not specified.",
             "schema": {
               "type": "string",
-              "description": "The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.\r\n             There is no upper bound if this is not specified.",
+              "description": "The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.\r\n            There is no upper bound if this is not specified.",
               "format": "dateorcutlabel",
               "nullable": true
             }
@@ -70199,10 +70833,10 @@
           {
             "name": "asAt",
             "in": "query",
-            "description": "The asAt datetime at which to retrieve transactions. Defaults to returning the latest version\r\n             of each transaction if not specified.",
+            "description": "The asAt datetime at which to retrieve transactions. Defaults to returning the latest version\r\n            of each transaction if not specified.",
             "schema": {
               "type": "string",
-              "description": "The asAt datetime at which to retrieve transactions. Defaults to returning the latest version\r\n             of each transaction if not specified.",
+              "description": "The asAt datetime at which to retrieve transactions. Defaults to returning the latest version\r\n            of each transaction if not specified.",
               "format": "date-time",
               "nullable": true
             },
@@ -70211,27 +70845,27 @@
           {
             "name": "filter",
             "in": "query",
-            "description": "Expression with which to filter the result set.\r\n             For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\"\r\n             For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.",
+            "description": "Expression with which to filter the result set.\r\n            For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\"\r\n            For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.",
             "schema": {
               "maxLength": 16384,
               "minLength": 0,
               "pattern": "^[\\s\\S]*$",
               "type": "string",
-              "description": "Expression with which to filter the result set.\r\n             For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\"\r\n             For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.",
+              "description": "Expression with which to filter the result set.\r\n            For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\"\r\n            For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.",
               "nullable": true
             }
           },
           {
             "name": "propertyKeys",
             "in": "query",
-            "description": "A list of property keys from the 'Instrument' or 'Transaction' domain to decorate onto\r\n             transactions. These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name' or\r\n             'Transaction/strategy/quantsignal'.",
+            "description": "A list of property keys from the 'Instrument' or 'Transaction' domain to decorate onto\r\n            transactions. These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name' or\r\n            'Transaction/strategy/quantsignal'.",
             "schema": {
               "type": "array",
               "items": {
                 "type": "string",
                 "description": "The key that uniquely identifies the property. It has the format {domain}/{scope}/{code}."
               },
-              "description": "A list of property keys from the 'Instrument' or 'Transaction' domain to decorate onto\r\n             transactions. These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name' or\r\n             'Transaction/strategy/quantsignal'.",
+              "description": "A list of property keys from the 'Instrument' or 'Transaction' domain to decorate onto\r\n            transactions. These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name' or\r\n            'Transaction/strategy/quantsignal'.",
               "nullable": true
             },
             "x-nullable": true
@@ -70271,6 +70905,32 @@
               "pattern": "^[a-zA-Z0-9\\-_]+$",
               "type": "string",
               "description": "The scope containing the quotes with the FX rates used for currency conversion.",
+              "nullable": true
+            }
+          },
+          {
+            "name": "slice",
+            "in": "query",
+            "description": "When running LookThrough, define this slice as the root slice in the portfolio to look through from.",
+            "schema": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9\\-_]+$",
+              "type": "string",
+              "description": "When running LookThrough, define this slice as the root slice in the portfolio to look through from.",
+              "nullable": true
+            }
+          },
+          {
+            "name": "shareClass",
+            "in": "query",
+            "description": "When running LookThrough, use this along with the slice parameter to specify\r\n            the root share class in the slice in the portfolio to look through from. The slice parameter is a prerequisite\r\n            for this parameter to be valid.",
+            "schema": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9\\-_]+$",
+              "type": "string",
+              "description": "When running LookThrough, use this along with the slice parameter to specify\r\n            the root share class in the slice in the portfolio to look through from. The slice parameter is a prerequisite\r\n            for this parameter to be valid.",
               "nullable": true
             }
           }
@@ -73083,7 +73743,7 @@
     "key": {
       "unitResult/LusidInstrumentId": "LUID_0000ABCD"
     },
-    "dataAddress": "UnitResult/Accrual",
+    "dataAddress": "UnitResult/Valuation/InstrumentAccrued",
     "resultValue": {
       "units": "USD",
       "value": 0.0102,
@@ -73112,7 +73772,7 @@
     "key": {
       "unitResult/LusidInstrumentId": "LUID_0000ABCD"
     },
-    "dataAddress": "UnitResult/Accrual",
+    "dataAddress": "UnitResult/Valuation/InstrumentAccrued",
     "resultValue": {
       "units": "USD",
       "value": 0.0102,
@@ -73141,7 +73801,7 @@
     "key": {
       "unitResult/LusidInstrumentId": "LUID_0000ABCD"
     },
-    "dataAddress": "UnitResult/Accrual",
+    "dataAddress": "UnitResult/Valuation/InstrumentAccrued",
     "resultValue": {
       "units": "USD",
       "value": 0.0102,
@@ -73170,7 +73830,7 @@
     "key": {
       "unitResult/LusidInstrumentId": "LUID_0000ABCD"
     },
-    "dataAddress": "UnitResult/Accrual",
+    "dataAddress": "UnitResult/Valuation/InstrumentAccrued",
     "resultValue": {
       "units": "USD",
       "value": 0.0102,
@@ -74275,6 +74935,40 @@
         "additionalProperties": false,
         "description": "A resource to which access can be controlled"
       },
+      "AccessMetadataOperation": {
+        "required": [
+          "op",
+          "path",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "minLength": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccessMetadataValue"
+            }
+          },
+          "path": {
+            "maxLength": 1025,
+            "pattern": "^/.+",
+            "type": "string"
+          },
+          "op": {
+            "enum": [
+              "add"
+            ],
+            "type": "string",
+            "description": "The available values are: add"
+          },
+          "from": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "AccessMetadataValue": {
         "required": [
           "value"
@@ -74918,9 +75612,9 @@
             "description": "The instrument allocated."
           },
           "quantity": {
-            "type": "integer",
+            "type": "number",
             "description": "The quantity of given instrument allocated.",
-            "format": "int32"
+            "format": "double"
           },
           "portfolioId": {
             "$ref": "#/components/schemas/ResourceId"
@@ -75116,6 +75810,36 @@
           "Unknown"
         ],
         "type": "string"
+      },
+      "Barrier": {
+        "required": [
+          "direction",
+          "level",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "direction": {
+            "type": "string",
+            "description": "Supported string (enumeration) values are: [Down, Up]."
+          },
+          "level": {
+            "type": "number",
+            "description": "Trigger level, which the underlying should (or should not) cross/touch.",
+            "format": "double"
+          },
+          "monitoring": {
+            "type": "string",
+            "description": "Supported string (enumeration) values are: [European, Bermudan, American].",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "description": "Supported string (enumeration) values are: [Knockin, Knockout]."
+          }
+        },
+        "additionalProperties": false,
+        "description": "Barrier class for exotic FxOption"
       },
       "Basket": {
         "allOf": [
@@ -75420,7 +76144,7 @@
               },
               "principal": {
                 "type": "number",
-                "description": "The face-value or principal for the bond at outset.\r\nThis might be reduced through its lifetime in the event of amortization or similar.",
+                "description": "The face-value or principal for the bond at outset.\r\nThis might be reduced through its lifetime in the event of amortisation or similar.",
                 "format": "double"
               },
               "couponRate": {
@@ -75500,6 +76224,70 @@
           }
         ],
         "description": "LUSID representation of a Vanilla Fixed Rate Bond."
+      },
+      "BondDefaultEvent": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/InstrumentEvent"
+          },
+          {
+            "required": [
+              "amount",
+              "couponPaidDate",
+              "defaultStatus",
+              "defaultType",
+              "graceEndDate",
+              "instrumentEventType",
+              "paymentDate"
+            ],
+            "type": "object",
+            "properties": {
+              "amount": {
+                "type": "number",
+                "description": "Percentage or amount of each share held to be given to shareholders.",
+                "format": "double"
+              },
+              "couponPaidDate": {
+                "type": "string",
+                "description": "Date that the missed coupon is paid if payment is made within grace period.",
+                "format": "date-time"
+              },
+              "defaultStatus": {
+                "type": "string",
+                "description": "The status of the bond default (i.e., technical or default)\r\n\r\nSupported string (enumeration) values are: [Technical, Default]."
+              },
+              "defaultType": {
+                "type": "string",
+                "description": "The type of the default. (coupon payment, principal payment, covenant ...)\r\n\r\nSupported string (enumeration) values are: [CouponPayment, CouponAndPrincipalPayment, PrincipalPayment, Covenant, Bankruptcy, BuyBackOption]."
+              },
+              "graceEndDate": {
+                "type": "string",
+                "description": "Date the grace period for making coupon payment ends.",
+                "format": "date-time"
+              },
+              "paymentDate": {
+                "type": "string",
+                "description": "The date the coupon payment was missed.",
+                "format": "date-time"
+              },
+              "instrumentEventType": {
+                "enum": [
+                  "TransitionEvent",
+                  "InternalEvent",
+                  "CouponEvent",
+                  "OpenEvent",
+                  "CloseEvent",
+                  "StockSplitEvent",
+                  "BondDefaultEvent",
+                  "CashDividendEvent"
+                ],
+                "type": "string",
+                "description": "The Type of Event. The available values are: TransitionEvent, InternalEvent, CouponEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent"
+              }
+            }
+          }
+        ],
+        "description": "Indicates when an issuer has defaulted on an obligation due to technical default, missed payments, or bankruptcy filing."
       },
       "BucketedCashFlowRequest": {
         "required": [
@@ -75801,6 +76589,54 @@
           }
         ],
         "description": "LUSID representation of Cap, Floor, or Collar."
+      },
+      "CashDividendEvent": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/InstrumentEvent"
+          },
+          {
+            "required": [
+              "grossAmount",
+              "instrumentEventType",
+              "paymentDate",
+              "recordDate"
+            ],
+            "type": "object",
+            "properties": {
+              "grossAmount": {
+                "type": "number",
+                "description": "The before tax amount for each share held being paid out to shareholders.",
+                "format": "double"
+              },
+              "paymentDate": {
+                "type": "string",
+                "description": "The date the company pays out dividends to shareholders.",
+                "format": "date-time"
+              },
+              "recordDate": {
+                "type": "string",
+                "description": "Date you have to be the holder of record in order to participate in the tender.",
+                "format": "date-time"
+              },
+              "instrumentEventType": {
+                "enum": [
+                  "TransitionEvent",
+                  "InternalEvent",
+                  "CouponEvent",
+                  "OpenEvent",
+                  "CloseEvent",
+                  "StockSplitEvent",
+                  "BondDefaultEvent",
+                  "CashDividendEvent"
+                ],
+                "type": "string",
+                "description": "The Type of Event. The available values are: TransitionEvent, InternalEvent, CouponEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent"
+              }
+            }
+          }
+        ],
+        "description": "A cash distribution paid out to shareholders."
       },
       "CashFlowLineage": {
         "type": "object",
@@ -76321,10 +77157,13 @@
                   "InternalEvent",
                   "CouponEvent",
                   "OpenEvent",
-                  "CloseEvent"
+                  "CloseEvent",
+                  "StockSplitEvent",
+                  "BondDefaultEvent",
+                  "CashDividendEvent"
                 ],
                 "type": "string",
-                "description": "The Type of Event. The available values are: TransitionEvent, InternalEvent, CouponEvent, OpenEvent, CloseEvent"
+                "description": "The Type of Event. The available values are: TransitionEvent, InternalEvent, CouponEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent"
               }
             }
           }
@@ -76646,6 +77485,26 @@
         "additionalProperties": false,
         "description": "An identifier that uniquely describes an item of complex market data such as an interest rate curve or volatility surface."
       },
+      "ComplianceBreachedOrderInfo": {
+        "required": [
+          "listRuleResult",
+          "orderId"
+        ],
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "$ref": "#/components/schemas/ResourceId"
+          },
+          "listRuleResult": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ComplianceRuleResult"
+            },
+            "description": "The related list of rule results that may be applicable to this order (applied to portfolio that the order belongs to)"
+          }
+        },
+        "additionalProperties": false
+      },
       "ComplianceRule": {
         "required": [
           "code",
@@ -76888,10 +77747,14 @@
         },
         "additionalProperties": false
       },
-      "ComplianceRun": {
+      "ComplianceRunInfo": {
         "required": [
+          "allRulesPassed",
           "asAt",
-          "runId"
+          "completedAt",
+          "instigatedAt",
+          "runId",
+          "schedule"
         ],
         "type": "object",
         "properties": {
@@ -76899,9 +77762,27 @@
             "type": "string",
             "description": "The unique identifier of a compliance run"
           },
+          "instigatedAt": {
+            "type": "string",
+            "description": "The time the compliance run was launched (e.g. button pressed). Currently it is also both the as at and effective at time in whichthe rule set and portfolio data (including any pending trades if the run is pretrade) is taken for the caluation, although it may be possible to run compliance for historical effective at and as at dates in the future.",
+            "format": "date-time"
+          },
+          "completedAt": {
+            "type": "string",
+            "description": "The time the compliance run calculation was completed",
+            "format": "date-time"
+          },
+          "schedule": {
+            "type": "string",
+            "description": "Whether the compliance run was pre or post trade"
+          },
+          "allRulesPassed": {
+            "type": "boolean",
+            "description": "True if all rules passed, for all the portfolios they were assigned to"
+          },
           "asAt": {
             "type": "string",
-            "description": "The date at time at which the compliance run was run",
+            "description": "Legacy AsAt time for backwards compatibility",
             "format": "date-time"
           }
         },
@@ -76935,7 +77816,7 @@
           },
           "spreadCompoundingMethod": {
             "type": "string",
-            "description": "Defines how the computed leg spread is applied to compounded rate.\r\nIt applies only when CompoundingMethod = â€˜Compoundedâ€˜.\r\n\r\nSupported string (enumeration) values are: [Straight, IsdaCompounding, NoCompounding, SpreadExclusive, IsdaFlatCompounding, Flat, None]."
+            "description": "Defines how the computed leg spread is applied to compounded rate.\r\nIt applies only when CompoundingMethod = ‘Compounded‘.\r\n\r\nSupported string (enumeration) values are: [Straight, IsdaCompounding, NoCompounding, SpreadExclusive, IsdaFlatCompounding, Flat, None]."
           }
         },
         "additionalProperties": false,
@@ -77476,10 +78357,13 @@
                   "InternalEvent",
                   "CouponEvent",
                   "OpenEvent",
-                  "CloseEvent"
+                  "CloseEvent",
+                  "StockSplitEvent",
+                  "BondDefaultEvent",
+                  "CashDividendEvent"
                 ],
                 "type": "string",
-                "description": "The Type of Event. The available values are: TransitionEvent, InternalEvent, CouponEvent, OpenEvent, CloseEvent"
+                "description": "The Type of Event. The available values are: TransitionEvent, InternalEvent, CouponEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent"
               }
             }
           }
@@ -78815,7 +79699,7 @@
           },
           "entityTypeName": {
             "type": "string",
-            "description": "The name provided when the custom entity type was created. This has been prefixed with â€œ~â€ and returned as â€œentityTypeâ€, which is the identifier for the custom entity type."
+            "description": "The name provided when the custom entity type was created. This has been prefixed with “~” and returned as “entityType”, which is the identifier for the custom entity type."
           },
           "displayName": {
             "type": "string",
@@ -78828,7 +79712,7 @@
           },
           "entityType": {
             "type": "string",
-            "description": "The identifier for the custom entity type, derived from the â€œentityTypeNameâ€ provided on creation."
+            "description": "The identifier for the custom entity type, derived from the “entityTypeName” provided on creation."
           },
           "fieldSchema": {
             "type": "array",
@@ -78852,7 +79736,7 @@
             "maxLength": 64,
             "minLength": 1,
             "type": "string",
-            "description": "A name for the custom entity type. This will be prefixed with â€œ~â€ and returned as â€œentityTypeâ€, which is the identifier for the custom entity type."
+            "description": "A name for the custom entity type. This will be prefixed with “~” and returned as “entityType”, which is the identifier for the custom entity type."
           },
           "displayName": {
             "pattern": "^[\\s\\S]*$",
@@ -78900,7 +79784,7 @@
           },
           "effectiveUntil": {
             "type": "string",
-            "description": "The effective datetime until which the field's value is valid. If not supplied, the value will be valid indefinitely or until the next â€œeffectiveFromâ€ date of the field.",
+            "description": "The effective datetime until which the field's value is valid. If not supplied, the value will be valid indefinitely or until the next “effectiveFrom” date of the field.",
             "format": "date-time",
             "nullable": true
           }
@@ -78922,11 +79806,11 @@
           },
           "lifetime": {
             "type": "string",
-            "description": "Describes how the fieldâ€™s values can change over time. The available values are: â€œPerpetualâ€, â€œTimeVariantâ€."
+            "description": "Describes how the field’s values can change over time. The available values are: “Perpetual”, “TimeVariant”."
           },
           "type": {
             "type": "string",
-            "description": "The value type for the field. Available values are: â€œStringâ€, â€œBooleanâ€, â€œDateTimeâ€, â€œDecimalâ€."
+            "description": "The value type for the field. Available values are: “String”, “Boolean”, “DateTime”, “Decimal”."
           },
           "required": {
             "type": "boolean",
@@ -79155,6 +80039,14 @@
             "type": "string",
             "description": "Is the item either a unique key for the dictionary, i.e. does it identify a unique index or conceptual 'row' within the list of dictionaries,\r\nor a partial key or is it simply a data item within that dictionary. Must be one of [Unique,PartOfUnique,Leaf, CompositeLeaf]",
             "nullable": true
+          },
+          "allowNull": {
+            "type": "boolean",
+            "description": "The path to the field must exist (unless AllowMissing is true) but the actual value is allowed to be null."
+          },
+          "allowMissing": {
+            "type": "boolean",
+            "description": "The path (or column) is allowed to be missing but if it is present it is not allowed to be null unless AllowNull is true."
           }
         },
         "additionalProperties": false,
@@ -79533,6 +80425,34 @@
         "additionalProperties": false
       },
       "DeleteInstrumentResponse": {
+        "required": [
+          "asAt"
+        ],
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "description": "The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.",
+            "format": "uri",
+            "nullable": true
+          },
+          "asAt": {
+            "type": "string",
+            "description": "The as-at datetime at which the instrument was deleted.",
+            "format": "date-time"
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            },
+            "description": "Collection of links.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeleteInstrumentsResponse": {
         "required": [
           "asAt"
         ],
@@ -81046,7 +81966,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "description": "Any overriding data for notionals, spreads or rates that would affect generation of a leg.\r\nThis supports the case where an amortization schedule is given but otherwise generation is allowed as usual.",
+                "description": "Any overriding data for notionals, spreads or rates that would affect generation of a leg.\r\nThis supports the case where an amortisation schedule is given but otherwise generation is allowed as usual.",
                 "nullable": true
               },
               "instrumentType": {
@@ -81204,7 +82124,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "description": "Any overriding data for notionals, spreads or rates that would affect generation of a leg.\r\nThis supports the case where an amortization schedule is given but otherwise generation is allowed as usual.",
+                "description": "Any overriding data for notionals, spreads or rates that would affect generation of a leg.\r\nThis supports the case where an amortisation schedule is given but otherwise generation is allowed as usual.",
                 "nullable": true
               },
               "instrumentType": {
@@ -81742,7 +82662,7 @@
           },
           "contractCode": {
             "type": "string",
-            "description": "The contract code used by the exchange, e.g. â€œCLâ€ for Crude Oil, â€œESâ€ for E-mini SP 500, â€œFGBLâ€ for Bund Futures, etc."
+            "description": "The contract code used by the exchange, e.g. “CL” for Crude Oil, “ES” for E-mini SP 500, “FGBL” for Bund Futures, etc."
           },
           "contractMonth": {
             "type": "string",
@@ -82329,8 +83249,7 @@
               "isDeliveryNotCash",
               "optionMaturityDate",
               "optionSettlementDate",
-              "startDate",
-              "strike"
+              "startDate"
             ],
             "type": "object",
             "properties": {
@@ -82338,29 +83257,6 @@
                 "type": "string",
                 "description": "The start date of the instrument. This is normally synonymous with the trade-date.",
                 "format": "date-time"
-              },
-              "optionMaturityDate": {
-                "type": "string",
-                "description": "The maturity date of the option.",
-                "format": "date-time"
-              },
-              "optionSettlementDate": {
-                "type": "string",
-                "description": "The settlement date of the option.",
-                "format": "date-time"
-              },
-              "isDeliveryNotCash": {
-                "type": "boolean",
-                "description": "True if the option is settled in cash, false if delivery."
-              },
-              "isCallNotPut": {
-                "type": "boolean",
-                "description": "True if the option is a call, false if the option is a put."
-              },
-              "strike": {
-                "type": "number",
-                "description": "The strike of the option.",
-                "format": "double"
               },
               "domCcy": {
                 "type": "string",
@@ -82376,13 +83272,24 @@
                 "type": "string",
                 "description": "The foreign currency of the FX."
               },
-              "premium": {
-                "$ref": "#/components/schemas/Premium"
-              },
               "fgnAmount": {
                 "type": "number",
                 "description": "For a vanilla FxOption contract, FgnAmount cannot be set.\r\nIn case of a digital FxOption (IsPayoffDigital==true)\r\na payoff (if the option is in the money) can be either\r\nin domestic or in foreign currency - for the latter\r\nFgnAmount must be set.\r\nNote: It is invalid to have FgnAmount and DomAmount\r\nat the same time.",
                 "format": "double",
+                "nullable": true
+              },
+              "strike": {
+                "type": "number",
+                "description": "The strike of the option.",
+                "format": "double",
+                "nullable": true
+              },
+              "barriers": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Barrier"
+                },
+                "description": "For a barrier option the list should not be empty. Up to two barriers are supported.\r\nAn option cannot be at the same time barrier- and touch-option.\r\nOne (or both) of the lists must be empty.",
                 "nullable": true
               },
               "exerciseType": {
@@ -82390,9 +83297,43 @@
                 "description": "Type of optionality that is present; European, Bermudan, American.\r\n\r\nSupported string (enumeration) values are: [European, Bermudan, American].",
                 "nullable": true
               },
+              "isCallNotPut": {
+                "type": "boolean",
+                "description": "True if the option is a call, false if the option is a put."
+              },
+              "isDeliveryNotCash": {
+                "type": "boolean",
+                "description": "True if the option is settled in cash, false if delivery."
+              },
               "isPayoffDigital": {
                 "type": "boolean",
                 "description": "By default IsPayoffDigital is false. If IsPayoffDigital=true,\r\nthe option is 'digital', and the option payoff is 0 or 1 unit of currency,\r\ninstead of a vanilla CallPayoff=max(spot-strike,0) or PutPayoff=max(strike-spot,0)."
+              },
+              "optionMaturityDate": {
+                "type": "string",
+                "description": "The maturity date of the option.",
+                "format": "date-time"
+              },
+              "optionSettlementDate": {
+                "type": "string",
+                "description": "The settlement date of the option.",
+                "format": "date-time"
+              },
+              "payoutStyle": {
+                "type": "string",
+                "description": "PayoutStyle for touch options.\r\nFor options without touch optionality (IsTouch==false),\r\nPayoutStyle should not be set (ot it can be set to None)\r\nFor options with touch optionality (IsTouch==true),\r\nPayoutStyle cannot be None.\r\n\r\nSupported string (enumeration) values are: [Deferred, Immediate].",
+                "nullable": true
+              },
+              "premium": {
+                "$ref": "#/components/schemas/Premium"
+              },
+              "touches": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Touch"
+                },
+                "description": "For a touch option the list should not be empty. Up to two touches are supported.\r\nAn option cannot be at the same time barrier- and touch-option.\r\nOne (or both) of the lists must be empty.",
+                "nullable": true
               },
               "instrumentType": {
                 "enum": [
@@ -83583,10 +84524,11 @@
           "state": {
             "enum": [
               "Active",
-              "Inactive"
+              "Inactive",
+              "Deleted"
             ],
             "type": "string",
-            "description": "The state of of the instrument at the asAt datetime of this version of the instrument definition. The available values are: Active, Inactive"
+            "description": "The state of of the instrument at the asAt datetime of this version of the instrument definition. The available values are: Active, Inactive, Deleted"
           },
           "assetClass": {
             "enum": [
@@ -83739,6 +84681,13 @@
         "additionalProperties": false,
         "description": "What is the provenance of an instrument. This defines who creates/owns it, what format it is in (e.g. a proprietary format or a common and known one)\r\n            and what the version of that is."
       },
+      "InstrumentDeleteModes": {
+        "enum": [
+          "soft",
+          "hard"
+        ],
+        "type": "string"
+      },
       "InstrumentEvent": {
         "required": [
           "instrumentEventType"
@@ -83751,10 +84700,13 @@
               "InternalEvent",
               "CouponEvent",
               "OpenEvent",
-              "CloseEvent"
+              "CloseEvent",
+              "StockSplitEvent",
+              "BondDefaultEvent",
+              "CashDividendEvent"
             ],
             "type": "string",
-            "description": "The Type of Event. The available values are: TransitionEvent, InternalEvent, CouponEvent, OpenEvent, CloseEvent"
+            "description": "The Type of Event. The available values are: TransitionEvent, InternalEvent, CouponEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent"
           }
         },
         "additionalProperties": false,
@@ -83828,7 +84780,10 @@
           "InternalEvent",
           "CouponEvent",
           "OpenEvent",
-          "CloseEvent"
+          "CloseEvent",
+          "StockSplitEvent",
+          "BondDefaultEvent",
+          "CashDividendEvent"
         ],
         "type": "string",
         "description": "The individual event types."
@@ -84392,10 +85347,13 @@
                   "InternalEvent",
                   "CouponEvent",
                   "OpenEvent",
-                  "CloseEvent"
+                  "CloseEvent",
+                  "StockSplitEvent",
+                  "BondDefaultEvent",
+                  "CashDividendEvent"
                 ],
                 "type": "string",
-                "description": "The Type of Event. The available values are: TransitionEvent, InternalEvent, CouponEvent, OpenEvent, CloseEvent"
+                "description": "The Type of Event. The available values are: TransitionEvent, InternalEvent, CouponEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent"
               }
             }
           }
@@ -85585,10 +86543,13 @@
                   "InternalEvent",
                   "CouponEvent",
                   "OpenEvent",
-                  "CloseEvent"
+                  "CloseEvent",
+                  "StockSplitEvent",
+                  "BondDefaultEvent",
+                  "CashDividendEvent"
                 ],
                 "type": "string",
-                "description": "The Type of Event. The available values are: TransitionEvent, InternalEvent, CouponEvent, OpenEvent, CloseEvent"
+                "description": "The Type of Event. The available values are: TransitionEvent, InternalEvent, CouponEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent"
               }
             }
           }
@@ -85624,6 +86585,12 @@
           }
         },
         "additionalProperties": false
+      },
+      "OperationType": {
+        "enum": [
+          "add"
+        ],
+        "type": "string"
       },
       "Operator": {
         "enum": [
@@ -85827,7 +86794,7 @@
           },
           "derivedComplianceState": {
             "type": "string",
-            "description": "The overall compliance state of a block, derived from the block's orders. Possible values are Pending, Failed, and Passed."
+            "description": "The overall compliance state of a block, derived from the block's orders. Possible values are 'Pending', 'Failed', 'Manually approved' and 'Passed'."
           }
         },
         "additionalProperties": false
@@ -85912,7 +86879,7 @@
           },
           "complianceState": {
             "type": "string",
-            "description": "The compliance state of this order."
+            "description": "The compliance state of this order. Possible values are 'Pending', 'Failed', 'Manually approved' and 'Passed'."
           }
         },
         "additionalProperties": false
@@ -86244,9 +87211,9 @@
             "description": "The instrument ordered."
           },
           "quantity": {
-            "type": "integer",
+            "type": "number",
             "description": "The quantity of given instrument ordered.",
-            "format": "int32"
+            "format": "double"
           },
           "side": {
             "type": "string",
@@ -87744,7 +88711,8 @@
       "PerpetualEntityState": {
         "enum": [
           "Active",
-          "Inactive"
+          "Inactive",
+          "Deleted"
         ],
         "type": "string"
       },
@@ -90656,6 +91624,11 @@
             "type": "string",
             "description": "The effective datetime from which the relationship is valid.",
             "format": "date-time"
+          },
+          "effectiveUntil": {
+            "type": "string",
+            "description": "The effective datetime until which the relationship is valid. If no future deletions are present or an effective until has not been set for the relationship, this will be indefinite and represented by the maximum date.",
+            "format": "date-time"
           }
         },
         "additionalProperties": false,
@@ -91201,6 +92174,47 @@
         "additionalProperties": false,
         "description": "A collection of resources that can be returned from requests."
       },
+      "ResourceListOfComplianceBreachedOrderInfo": {
+        "required": [
+          "values"
+        ],
+        "type": "object",
+        "properties": {
+          "values": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ComplianceBreachedOrderInfo"
+            },
+            "description": "The resources to list."
+          },
+          "href": {
+            "type": "string",
+            "description": "The URI of the resource list.",
+            "format": "uri",
+            "nullable": true
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            },
+            "description": "Collection of links.",
+            "nullable": true
+          },
+          "nextPage": {
+            "type": "string",
+            "description": "The next page of results.",
+            "nullable": true
+          },
+          "previousPage": {
+            "type": "string",
+            "description": "The previous page of results.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "A collection of resources that can be returned from requests."
+      },
       "ResourceListOfComplianceRule": {
         "required": [
           "values"
@@ -91283,7 +92297,7 @@
         "additionalProperties": false,
         "description": "A collection of resources that can be returned from requests."
       },
-      "ResourceListOfComplianceRun": {
+      "ResourceListOfComplianceRunInfo": {
         "required": [
           "values"
         ],
@@ -91292,7 +92306,7 @@
           "values": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ComplianceRun"
+              "$ref": "#/components/schemas/ComplianceRunInfo"
             },
             "description": "The resources to list."
           },
@@ -93046,6 +94060,36 @@
         "additionalProperties": false,
         "description": "A collection of resources that can be returned from requests."
       },
+      "ResponseMetaData": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The type of meta data information being provided",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of what occured for this specific piece of meta data",
+            "nullable": true
+          },
+          "identifierType": {
+            "type": "string",
+            "description": "The type of the listed identifiers",
+            "nullable": true
+          },
+          "identifiers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The related identifiers that were impacted by this event",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Metadata related to an api response"
+      },
       "ResultDataKeyRule": {
         "allOf": [
           {
@@ -94008,6 +95052,54 @@
         "additionalProperties": false,
         "description": "Schedule that steps at known dated points in time.\r\nUsed in representation of a sinking bond, also called amortisation, steps in coupons for fixed bonds and spreads for floating bonds."
       },
+      "StockSplitEvent": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/InstrumentEvent"
+          },
+          {
+            "required": [
+              "equitySplitRatio",
+              "instrumentEventType",
+              "paymentDate",
+              "recordDate"
+            ],
+            "type": "object",
+            "properties": {
+              "equitySplitRatio": {
+                "type": "number",
+                "description": "This number describes the rate at which the company will be dividing their current shares outstanding. It is displayed as new shares per old.",
+                "format": "double"
+              },
+              "paymentDate": {
+                "type": "string",
+                "description": "Date on which the stock-split takes effect.",
+                "format": "date-time"
+              },
+              "recordDate": {
+                "type": "string",
+                "description": "Date you have to be the holder of record in order to participate in the tender.",
+                "format": "date-time"
+              },
+              "instrumentEventType": {
+                "enum": [
+                  "TransitionEvent",
+                  "InternalEvent",
+                  "CouponEvent",
+                  "OpenEvent",
+                  "CloseEvent",
+                  "StockSplitEvent",
+                  "BondDefaultEvent",
+                  "CashDividendEvent"
+                ],
+                "type": "string",
+                "description": "The Type of Event. The available values are: TransitionEvent, InternalEvent, CouponEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent"
+              }
+            }
+          }
+        ],
+        "description": "A split in the company's shares. Shareholders are given additional company shares based on the terms of the stock split."
+      },
       "Stream": {
         "type": "object",
         "properties": {
@@ -94300,6 +95392,36 @@
           }
         ],
         "description": "LUSID representation of a Term Deposit."
+      },
+      "Touch": {
+        "required": [
+          "direction",
+          "level",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "direction": {
+            "type": "string",
+            "description": "Supported string (enumeration) values are: [Down, Up]."
+          },
+          "level": {
+            "type": "number",
+            "description": "Trigger level, which the underlying should (or should not) cross/touch.",
+            "format": "double"
+          },
+          "monitoring": {
+            "type": "string",
+            "description": "Supported string (enumeration) values are: [European, Bermudan, American].",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "description": "Supported string (enumeration) values are: [Touch, Notouch]."
+          }
+        },
+        "additionalProperties": false,
+        "description": "Touch class for exotic FxOption"
       },
       "Transaction": {
         "required": [
@@ -95090,7 +96212,7 @@
           },
           "setTo": {
             "maxLength": 512,
-            "minLength": 1,
+            "minLength": 0,
             "pattern": "^[\\s\\S]*$",
             "type": "string",
             "description": "A pointer to the Property being mapped from",
@@ -95179,10 +96301,13 @@
                   "InternalEvent",
                   "CouponEvent",
                   "OpenEvent",
-                  "CloseEvent"
+                  "CloseEvent",
+                  "StockSplitEvent",
+                  "BondDefaultEvent",
+                  "CashDividendEvent"
                 ],
                 "type": "string",
-                "description": "The Type of Event. The available values are: TransitionEvent, InternalEvent, CouponEvent, OpenEvent, CloseEvent"
+                "description": "The Type of Event. The available values are: TransitionEvent, InternalEvent, CouponEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent"
               }
             }
           }
@@ -95693,7 +96818,7 @@
       },
       "UpsertInstrumentEventRequest": {
         "required": [
-          "eventDetail",
+          "instrumentEvent",
           "instrumentEventId",
           "instrumentIdentifiers"
         ],
@@ -95721,7 +96846,7 @@
             "description": "The description of the instrument event.",
             "nullable": true
           },
-          "eventDetail": {
+          "instrumentEvent": {
             "$ref": "#/components/schemas/InstrumentEvent"
           },
           "properties": {
@@ -95833,7 +96958,7 @@
             "additionalProperties": {
               "$ref": "#/components/schemas/Instrument"
             },
-            "description": "The instruments which have been successfully updated or inserted.",
+            "description": "The instruments which have been successfully updated or created.",
             "nullable": true
           },
           "failed": {
@@ -95841,7 +96966,18 @@
             "additionalProperties": {
               "$ref": "#/components/schemas/ErrorDetail"
             },
-            "description": "The instruments that could not be updated or inserted along with a reason for their failure.",
+            "description": "The instruments that could not be updated or created or were left unchanged without error along with a reason for their failure.",
+            "nullable": true
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ResponseMetaData"
+              }
+            },
+            "description": "Meta data associated with the upsert event.",
             "nullable": true
           },
           "links": {
@@ -96013,6 +97149,17 @@
             "type": "string",
             "description": "The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.",
             "format": "uri",
+            "nullable": true
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ResponseMetaData"
+              }
+            },
+            "description": "Contains warnings related to unresolved instruments or non-existent transaction types for the upserted trades",
             "nullable": true
           },
           "links": {
