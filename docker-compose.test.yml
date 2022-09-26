@@ -1,7 +1,6 @@
 version: "3"
 
 services:
-
   lusid-sdk-angular-gen:
     container_name: lusid-sdk-angular13-gen
     build: .
@@ -19,5 +18,4 @@ services:
         cd /usr/src
         DISPLAY=":99"
         printf '#!/bin/sh\nXvfb :99 -screen 0 1280x1024x24 &\nexec "$$@"\n'
-        npm run ng test --no-watch --no-progress --browsers=ChromeHeadlessCI
-        npm run ng e2e --no-watch --no-progress --browsers=ChromeHeadlessCI
+        npm run ng test -- --no-watch --browsers=ChromeHeadlessCI
