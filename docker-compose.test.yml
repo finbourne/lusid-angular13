@@ -4,7 +4,6 @@ services:
   lusid-sdk-angular-gen:
     container_name: lusid-sdk-angular13-gen
     build: .
-    platform: linux/amd64
     image: finbourne/lusid-sdk-angular13-gen
     volumes:
       - .:/usr/src
@@ -12,7 +11,7 @@ services:
     command:
       - -ce
       - |
-        # ./generate.sh lusid.json
+        ./generate.sh lusid.json
         pwd
         ls -tla
         cd /usr/src
