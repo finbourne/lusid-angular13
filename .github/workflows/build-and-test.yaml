@@ -67,8 +67,6 @@ jobs:
           FBN_ACCESS_TOKEN: ${{ secrets.TOKEN }}
         run: |
           echo "env variables have been set"
-          echo "Changing directory into src directory"
-          cd src          
           echo "Running the tests..."
           docker-compose -f docker-compose.test.yml up --abort-on-container-exit
           echo "Tests COMPLETED"

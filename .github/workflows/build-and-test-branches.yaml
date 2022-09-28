@@ -31,12 +31,9 @@ jobs:
           FBN_LUSID_API_URL: ${{ secrets.DEVELOP_FBN_LUSID_API_URL }}
           FBN_APP_NAME: ${{ secrets.DEVELOP_FBN_CLIENT_ID }}
           FBN_ACCESS_TOKEN: ${{ secrets.DEVELOP_FBN_ACCESS_TOKEN }}
-          FBN_LUSID_ACCESS_TOKEN: ${{ secrets.DEVELOP_FBN_ACCESS_TOKEN }}
           FBN_BASE_API_URL: ${{ secrets.DEVELOP_FBN_BASE_API_URL }}
         run: |
           echo "env variables for DEVELOP have been set"
-          echo "Changing directory into src directory"
-          cd src          
           echo "Running the tests..."
           docker-compose -f docker-compose.test.yml up --abort-on-container-exit
           echo "Tests COMPLETED"
